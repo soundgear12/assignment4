@@ -191,6 +191,9 @@ public class MeritBank {
 			return Math.pow(factor, term) * presentValue;
 	}
 	
+	public static boolean processTransaction(Transaction transaction) throws NegativeAmountException, ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
+		
+	}
 
 	
 }

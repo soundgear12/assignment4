@@ -1,14 +1,20 @@
 package com.meritamerica.assignment4;
 
+import java.util.Date;
+
 public class DepositTransaction extends Transaction {
 
-	public DepositTransaction(CheckingAccount checkingAccount, int i) {
-		// TODO Auto-generated constructor stub
-	}
 	
-	public DepositTransaction(BankAccount TargetAccount, double amount) {
-		
+	
+	private DepositTransaction(BankAccount sourceAccount, BankAccount targetAccount, double amount, Date accountOpenedOn) {
+		super(sourceAccount, targetAccount, amount, accountOpenedOn);	
+		}
+	
+
+	public DepositTransaction(BankAccount targetAccount, double amount) {
+		super(targetAccount, amount);
 	}
+
 
 	@Override
 	public void process()

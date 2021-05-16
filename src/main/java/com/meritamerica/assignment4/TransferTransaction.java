@@ -1,5 +1,7 @@
 package com.meritamerica.assignment4;
 
+import java.util.Date;
+
 public class TransferTransaction extends Transaction {
 
 	@Override
@@ -9,8 +11,14 @@ public class TransferTransaction extends Transaction {
 		
 	}
 	
-	public TransferTransaction(BankAccount sourceAccount, BankAccount tagetAccount, double amount) {
-		
+
+	
+	private TransferTransaction(BankAccount sourceAccount, BankAccount targetAccount, double amount, Date accountOpenedOn) {
+		super(sourceAccount, targetAccount, amount, accountOpenedOn);	
+		}
+	
+	TransferTransaction(BankAccount sourceAccount, BankAccount targetAccount, double amount) {
+		super(sourceAccount, targetAccount, amount);
 	}
 
 }

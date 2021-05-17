@@ -7,7 +7,14 @@ public class TransferTransaction extends Transaction {
 	@Override
 	public void process()
 			throws NegativeAmountException, ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
-		// TODO Auto-generated method stub
+		if (amount > targetAccount.balance) {
+			throw new ExceedsAvailableBalanceException("Withdrawal amount exceeds balance");
+		} else if (amount > 1000) {
+			throw new ExceedsFraudSuspicionLimitException("Transfer amount exceeds suspicion limit");
+			FraudQueue.addTransaction();
+		}
+		sourceAccount.balance -=  this.amount;
+		targetAccount.balance += this.amount;
 		
 	}
 	

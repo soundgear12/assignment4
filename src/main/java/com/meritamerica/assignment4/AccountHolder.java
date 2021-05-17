@@ -25,7 +25,8 @@ public class AccountHolder {
 	int numberOfSavingsAccounts = 0;
 	double savingsBalance;
 	double offering;
-	CDAccount[] cdAccounts = new CDAccount[0];	
+	CDAccount[] cdAccounts = new CDAccount[0];
+	Transaction[] transaction = new DepositTransaction[0];
 	private double checkingAccountOpeningBalance;
 	private double savingsAccountOpeningBalance;
 	private SavingsAccount savings;
@@ -100,15 +101,14 @@ static double totalBalances() {
 	}
 	return CombinedBalance;
 }
-public CheckingAccount addCheckingAccount(double openingBalance) {
-		if (openingBalance < 0.0){
-			return null;
-		}
+public CheckingAccount addCheckingAccount(double openingBalance) throws ExceedsCombinedBalanceLimitException {
+		
 		if (this.getCheckingBalance() + this.getSavingsBalance() >= 250000.0){
-			return null;
+			throw new ExceedsCombinedBalanceLimitException("Combined balance exceeds 250,000");
 		}
 		CheckingAccount ca = new CheckingAccount(openingBalance);
-		return addCheckingAccount(ca); 
+		return addCheckingAccount(ca);
+		
 }
 public CheckingAccount addCheckingAccount(CheckingAccount checkingAccount) {
 		CheckingAccount[] temp = Arrays.copyOf(checkingAccounts, checkingAccounts.length + 1);

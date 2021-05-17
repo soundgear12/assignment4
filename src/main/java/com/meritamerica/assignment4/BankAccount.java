@@ -1,6 +1,6 @@
 package com.meritamerica.assignment4;
 
-import java.awt.List;
+import java.util.List;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,15 +9,20 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Objects;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
-public class BankAccount {
+public abstract class BankAccount {
 	private static char[] dataSplit;
 	protected long accountNumber;
 	protected double balance;
 	protected double interestRate;
 	Date accountOpenedOn;
-	ArrayList<Transaction> tList = new ArrayList<Transaction>();
+	List<Transaction> transaction = new ArrayList<>();
+	DepositTransaction depositTransaction = null;
+	WithdrawTransaction withdrawTransaction = null;
+	TransferTransaction transferTransaction = null;
+	
 	
 	BankAccount (double balance, double interestRate){
 		this.balance = balance;
@@ -42,6 +47,17 @@ public class BankAccount {
 		return accountOpenedOn;
 	}
 	
+	public void addTransaction(Transaction transaction) {
+		this.transaction.add(transaction);
+	}
+	
+
+	
+
+
+	public List<Transaction> getTransactions() {
+		return null;
+	}
 	
 	
 /*	public static BankAccount readFromString(String accountData) {
@@ -63,18 +79,10 @@ public class BankAccount {
 	}	
 */	
 	public static void main(String[] args) {
-		System.out.print(dataSplit);
+	 
 	}
 
-	public void addTransaction(Transaction transaction) {
-		
-	}
-	
-	
-	public List<Transaction> getTransactions() {
-		return <Transaction>;
-	}
-	
+
 	long getAccountNumber() {
 		return accountNumber;
 	}

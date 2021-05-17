@@ -67,6 +67,8 @@ public class MeritBank {
 								ach.addCheckingAccount(CheckingAccount.readFromString(br.readLine()));
 								
 							}
+						int numCheckingTransaction = Integer.parseInt(br.readLine());
+						
 						int numSavingsAccounts = Integer.parseInt(br.readLine());
 							
 							if (ach != null)
@@ -192,7 +194,13 @@ public class MeritBank {
 	}
 	
 	public static boolean processTransaction(Transaction transaction) throws NegativeAmountException, ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
+		if (Transaction) {
+			if (transaction.amount > 0 && transaction.amount < 1000) {
+				
+			}
+		}	
 		
+		return false;
 	}
 
 	

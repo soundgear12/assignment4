@@ -7,7 +7,11 @@ public class WithdrawTransaction extends Transaction {
 	@Override
 	public void process()
 			throws NegativeAmountException, ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
+		if (amount > targetAccount.balance) {
+			throw new ExceedsAvailableBalanceException("Withdrawal amount exceeds balance");
+		}
 		
+		targetAccount.balance = targetAccount.balance - amount;
 	}
 	
 	private WithdrawTransaction(BankAccount sourceAccount, BankAccount targetAccount, double amount, Date accountOpenedOn) {

@@ -21,7 +21,9 @@ public abstract class Transaction {
 	}
 
 	public Transaction(BankAccount targetAccount, double amount) {
-		
+		super();
+		this.targetAccount = targetAccount;
+		this.amount = amount;
 	}
 
 	BankAccount sourceAccount;
@@ -32,6 +34,7 @@ public abstract class Transaction {
 	SimpleDateFormat formatter = new SimpleDateFormat ("dd/MM/yyyy");
 	
 	Date date = new Date();
+	private String reason;
 	
 	
 	
@@ -81,6 +84,9 @@ public abstract class Transaction {
 	}
 	
 	public abstract void process() throws NegativeAmountException, ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException;	
+		
+	
+	
 	
 	public boolean isProcessedByFraudTeam() {
 		return false;
@@ -94,12 +100,12 @@ public abstract class Transaction {
 	}
 	
 	public String getRejectionReason() {
-		return null;
+		return reason;
 		
 	}
 	
 	public void setRejectionReason(String reason) {
-		
+		this.reason = reason;
 	}
 
 	
